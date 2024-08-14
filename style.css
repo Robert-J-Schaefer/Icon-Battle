@@ -1,0 +1,43 @@
+*{
+
+}
+
+body{
+
+}
+
+.navBar{
+    border: solid black;
+}
+
+.gameContainer{
+    border: solid black;
+    display: flex;
+    flex-direction: row;
+}
+
+.shipInfo{
+    border: solid green;
+}
+
+.gameField{
+    border: solid blue;
+    display: flex;
+    flex-direction: row;
+}
+
+.player{
+    border: solid goldenrod;
+}
+
+.middleGround{
+    border: solid red;
+}
+
+.enemy{
+    border: solid teal;
+}
+
+.battleLog{
+    border: solid purple;
+}

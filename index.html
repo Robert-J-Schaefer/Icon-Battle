@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" async defer></script>
+</head>
+
+<body>
+    <nav class=navBar>
+        <p>Icon Clash!</p>
+    </nav>
+    <!-- Container for the game and info during the game-->
+    <div class=gameContainer>
+        <!-- Displays the Player and Enemy current stats(Left of gameField cnt) -->
+        <div class="shipInfo">
+
+        </div>
+        <!-- A container for the gamefield(inbetween player and enemy cnt)-->
+        <div class="gameField">
+            <!-- the container to display the players ship -->
+            <div class="player">
+                <div class="pModel"></div>
+            </div>
+            <!-- the area between the player and enemy -->
+            <div class="middleGround">
+
+            </div>
+            <!-- displays the enemy ship-->
+            <div class="enemy">
+                <div class="eModel"></div>
+            </div>
+        </div>
+        <!-- Displays information of the last 4 turns(player,enemy,player,enemy) -->
+        <div class="battleLog">
+
+        </div>
+    </div>
+
+    <div class="btnContainer">
+        <!-- used to start the game -->
+        <button class="start"></button>
+        <!-- used to reset the game -->
+        <button class="reset"></button>
+    </div>
+
+</body>
+
+</html>
