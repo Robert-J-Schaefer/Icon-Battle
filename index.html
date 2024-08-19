@@ -19,8 +19,13 @@
     <!-- Container for the game and info during the game-->
     <div class=gameContainer>
         <!-- Displays the Player and Enemy current stats(Left of gameField cnt) -->
-        <div class="shipInfo">
-
+        <div class="combatLog" id="">
+            <h2>Combat Log</h2>
+            <p id="log1"></p>
+            <p id="log2"></p>
+            <p id="log3"></p>
+            <p id="log4"></p>
+            <p id="log5"></p>
         </div>
         <!-- A container for the gamefield(inbetween player and enemy cnt)-->
         <div class="gameField">
@@ -38,16 +43,19 @@
             </div>
         </div>
         <!-- Displays information of the last 4 turns(player,enemy,player,enemy) -->
-        <div class="battleLog">
-
+        <div class="shipInfo" id="">
+            <h2>Player</h2>
+            <p id="pHull"></p>
         </div>
     </div>
 
-    <div class="btnContainer">
+    <div class="userControl">
         <!-- used to start the game -->
-        <button class="start"></button>
+        <button class="start" onclick="testing()">Start</button>
+        <button class="fireLazer" onclick="Player.lazerATK()">Fire Lazer</button>
+        <butoon class="fireMissle">Fire Missile</butoon>
         <!-- used to reset the game -->
-        <button class="reset"></button>
+        <button class="reset" onclick="">Restart</button>
     </div>
 
 </body>
