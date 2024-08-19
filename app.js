@@ -39,58 +39,42 @@ let message = "Attack Hit";
 let blankChecked = 0;
 
 //Variable to store HTML elements
-let log = document.getElementById('log');
+let player = {};
+let enemy = {};
+
+
 
 
 //Class for the player, tracks name(maybe), hull(hp), firepower(damage), accuracy
-class Player {
+class PlayerShip {
     constructor() {
         this.name = "Player 1";
         this.hull = 20;
         this.firepower = 5;
         this.accuracy = .7;
-        this.lazerATK();
+        this.lazerAtk();
     }
 
    
     //Players Lazer Attack the enemy calls hit function and returns damage
-    lazerAtK() {
+    lazerAtk() {
+        console.log("Activate Lazer");
         if (this.accuracy >= Math.random(.1, 1).toFixed(1)){
-            player -= this.firepower;
-            message = this.name + "Lazer Hit!";
-            document.getElementById('pHull').innerHTML = this.hull
-            combatLog();
+            // enemy.hull -= this.firepower;
+            message = this.name + " Lazer Hit!";
+            document.getElementById('pHull').innerHTML = this.hull;
+            console.log("Lazer Hit" + player.hull);
         }else{
-            message = this.name + "Lazer Missed"
-            combatLog();
+            message = this.name + " Lazer Missed";
         }
          
     }
 }
 
-function lazerAtK() {
-        let hull = 20 - 10;
-        message = "Lazer Hit!";
-        document.getElementById('pHull').innerHTML = message
-        combatLog();
-    // if (.7 >= Math.random(.1, 1).toFixed(1)){
-    //     let hull = 20 - 10;
-    //     message = "Lazer Hit!";
-    //     document.getElementById('pHull').innerHTML = hull
-    //     combatLog();
-    // }else{
-    //     message = "Lazer Missed"
-    //     combatLog();
-    // }
-     
-}
-
-// playerLazer = new Player.lazerATK();
-
-
+player = new PlayerShip();
 
 //Class for the enemy, tracks name(maybe), hull(hp), firepower(damage), accuracy
-class Enemy {
+class EnemyShip {
     constructor() {
         this.name = "The Big Bad";
         this.hull = 20;
@@ -98,27 +82,54 @@ class Enemy {
         this.accuracy = .7;
     }
 
-
+    lazerAtk() {
+        if (this.accuracy >= Math.random(.1, 1).toFixed(1)){
+            player.hull -= this.firepower;
+            message = this.name + " Lazer Hit!";
+            
+            document.getElementById('pHull').innerHTML = this.hull;
+            combatLog();
+        }else{
+            message = this.name + " Lazer Missed";
+            combatLog();
+        }
+         
+    }
 }
 
-//Class for controlling a turn. Which include the player and enemy turn
-class GameTurn {
-    // let turn = 1;
-    // playerShip = new Player(player);
-    //Function for running a turn
-    static turn() {
-        // const didHit = hit();
-        if (this.hit() === 1) {
-            //Calc health missing
+enemy = new EnemyShip();
+
+
+//function for 
+function lazerAtk() {
+    player.lazerAtk(enemy);
+    combatLog();
+    //determines what attack the enemy will do
+    if (enemy.hull > 0){
+        let enemyAtk = Math.random(0, 1);
+        if (enemyAtk === 0){
+            enemy.lazerAtk();
+        }else{
+            // make the nemey use a missle attack
         }
     }
-
-
+    
+    checkLost();
 }
 
-//Class for assigning enemy stat vaules
-class EnemyStats {
-    //Maybe
+//
+function checkLost() {
+    if(enemy.hull <= 0){
+        enemy.Hull = 0;
+        message = "Enemy Shot Down!"
+    }
+
+    if(player.hull <= 0){
+        player.hull = 0
+        message = "You have been shot down!"
+    }
+
+    combatLog();
 }
 
 // Function to reset game if player chooses to
@@ -129,22 +140,19 @@ function reset() {
 // Function to reset the game
 function gameOver() {
     message = "GAME OVER! Reset To Play Again";
-    console.log("%c GAME OVER! Reset To Play Again", "background:grey; font-weight:bold; font-size:25px; color:black;")
-    messageEl.textContent = message;
-    btnEl.remove();
-    retreatEl.remove();
 }
-
+ 
 //Function to used to change the displayed message in combat log
 function combatLog() {
     //Loops through an array and assigns the new message to it
-    message = "It works";
+    console.log("combatLog");
     
     for (i = 0; i < 5; i++) {
         //checks to see if all 
         if (blankChecked > 0){
             switch (i) {
                 case 0:
+                    console.log("case 1");
                     cLog[i] = message;
                     console.log(cLog[i]);
                     i = 5;
@@ -152,18 +160,22 @@ function combatLog() {
                 case 1:
                     cLog[i] = message;
                     console.log(cLog[i]);
+                    i = 5;
                     break;
                 case 2:
                     cLog[i] = message;
                     console.log(cLog[i]);
+                    i = 5;
                     break;
                 case 3:
                     cLog[i] = message;
                     console.log(cLog[i]);
+                    i = 5;
                     break;
                 case 4:
                     cLog[i] = message;
                     console.log(cLog[i]);
+                    i = 5;
                     blankChecked = 1;
                     break;
             }
@@ -185,3 +197,5 @@ function testing(){
     document.getElementById("log4").innerHTML = cLog[3];
     document.getElementById("log5").innerHTML = cLog[4];
 }
+
+document.getElementById("lazer").addEventListener("Click", combatLog());
