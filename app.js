@@ -44,11 +44,12 @@ let log = document.getElementById('log');
 
 //Class for the player, tracks name(maybe), hull(hp), firepower(damage), accuracy
 class Player {
-    constructor(playerShip) {
+    constructor() {
         this.name = "Player 1";
         this.hull = 20;
         this.firepower = 5;
         this.accuracy = .7;
+        this.lazerATK();
     }
 
    
@@ -67,11 +68,30 @@ class Player {
     }
 }
 
+function lazerAtK() {
+        let hull = 20 - 10;
+        message = "Lazer Hit!";
+        document.getElementById('pHull').innerHTML = message
+        combatLog();
+    // if (.7 >= Math.random(.1, 1).toFixed(1)){
+    //     let hull = 20 - 10;
+    //     message = "Lazer Hit!";
+    //     document.getElementById('pHull').innerHTML = hull
+    //     combatLog();
+    // }else{
+    //     message = "Lazer Missed"
+    //     combatLog();
+    // }
+     
+}
+
+// playerLazer = new Player.lazerATK();
+
 
 
 //Class for the enemy, tracks name(maybe), hull(hp), firepower(damage), accuracy
 class Enemy {
-    constructor(enemyShip) {
+    constructor() {
         this.name = "The Big Bad";
         this.hull = 20;
         this.firepower = 5;
